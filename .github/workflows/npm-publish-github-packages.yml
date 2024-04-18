@@ -19,7 +19,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - run: npm install
       - run: npm run lint
-      - run: npm run install -g prettier
+      - run: npm install -g prettier
       - run: npm run prettier
       - run: CI=true npm run test
       - run: npm run build
