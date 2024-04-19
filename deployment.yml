@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: subnetapp
+  namespace: production
+  labels:
+    app: subnetapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: subnetapp
+  template:
+    metadata:
+      labels:
+        app: subnetapp
+    spec:
+      containers:
+      - name: subnetapp
+        image: harwicu/labfull:v2
+        ports:
+          - containerPort: 3000
+        env:
+        - name: MY_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: mysecret
+              key: password
